@@ -1,18 +1,15 @@
 function solution(str) {
   const stack = [];
-  let lastBracket = '';
   let answer = 0;
 
-  str.split('').forEach((bracket) => {
+  str.split('').forEach((bracket, idx) => {
     switch (bracket) {
       case '(':
         stack.push(bracket);
-        lastBracket = bracket;
         break;
       case ')':
         stack.pop();
-        answer += lastBracket === '(' ? stack.length : 1;
-        lastBracket = bracket;
+        answer += str[idx - 1] === '(' ? stack.length : 1;
         break;
     }
   });
