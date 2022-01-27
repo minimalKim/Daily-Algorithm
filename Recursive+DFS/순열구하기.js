@@ -5,7 +5,7 @@ function solution(str) {
   const temp = Array.from({ length: capacity });
   const answer = [];
 
-  function DFS(level, num) {
+  function DFS(level) {
     if (level === capacity) {
       answer.push(temp.join(' '));
       return;
