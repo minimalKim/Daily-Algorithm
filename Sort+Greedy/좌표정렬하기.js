@@ -10,11 +10,19 @@ function solution(str) {
   return sortedCoordinates.map((coordinate) => coordinate.join(' ')).join('\n');
 }
 
-const input = `5
-3 4
-1 1
-1 -1
-2 2
-3 3`;
+const input = `13
+but
+i
+wont
+hesitate
+no
+more
+no
+more
+it
+cannot
+wait
+im
+yours`;
 
 console.log(solution(input));
