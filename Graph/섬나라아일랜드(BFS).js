@@ -5,33 +5,36 @@ function solution(str) {
 
   const dx = [-1, 0, 1, 1, 1, 0, -1, -1];
   const dy = [-1, -1, -1, 0, 1, 1, 1, 0];
+  const queue = [];
   let counter = 0;
 
-  function DFS(x, y) {
-    for (let i = 0; i < 8; i++) {
-      const nx = x + dx[i];
-      const ny = y + dy[i];
-      if (
-        nx >= 0 &&
-        ny >= 0 &&
-        nx < length &&
-        ny < length &&
-        board[nx][ny] === 1
-      ) {
-        board[nx][ny] = 0;
-        DFS(nx, ny);
-      }
-    }
-  }
-
-  // board[0][0] = 0;
-  // DFS(0, 0);
   for (let i = 0; i < length; i++) {
     for (let j = 0; j < length; j++) {
       if (board[i][j] === 1) {
+        // 섬찾으면 시작
         board[i][j] = 0;
-        DFS(i, j);
+        queue.push([i, j]);
+
+        while (queue.length) {
+          let [x, y] = queue.shift();
+
+          for (let k = 0; k < 8; k++) {
+            let nx = x + dx[k];
+            let ny = y + dy[k];
+            if (
+              nx >= 0 &&
+              ny >= 0 &&
+              nx < length &&
+              ny < length &&
+              board[nx][ny] === 1
+            ) {
+              board[nx][ny] = 0;
+              queue.push([nx, ny]);
+            }
+          }
+        }
         counter++;
+        // BFS End
       }
     }
   }
