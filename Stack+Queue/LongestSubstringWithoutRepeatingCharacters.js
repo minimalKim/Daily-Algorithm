@@ -13,3 +13,7 @@ const lengthOfLongestSubstring = function (s) {
 
   return maxNum;
 };
+
+//"abcabcbb"//3
+// pwwkew // 3
+// bbbbb // 1
