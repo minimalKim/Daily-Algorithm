@@ -54,31 +54,31 @@ const backspaceCompare3 = (s, t) => {
   let hashT = 0;
 
   while (i >= 0 || j >= 0) {
-    while (i >= 0) {
-      if (s[i] === '#') {
-        hashS++;
-      } else {
-        if (hashS === 0) break;
-        else hashS--;
-      }
+    if (s[i] == '#') {
+      hashS++;
       i--;
+      continue;
     }
 
-    while (j >= 0) {
-      if (t[j] === '#') {
-        hashT++;
-      } else {
-        if (hashT === 0) break;
-        else hashT--;
-      }
+    if (t[j] == '#') {
+      hashT++;
       j--;
+      continue;
     }
 
-    if (i >= 0 && j >= 0 && s[i] !== t[j]) {
-      return false;
+    if (hashS) {
+      hashS--;
+      i--;
+      continue;
     }
 
-    if (i >= 0 !== j >= 0) {
+    if (hashT) {
+      hashT--;
+      j--;
+      continue;
+    }
+
+    if (s[i] != t[j]) {
       return false;
     }
 
