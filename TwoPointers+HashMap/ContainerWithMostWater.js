@@ -39,14 +39,14 @@ const getArea = (heights, width) => {
 };
 
 const maxArea2 = (height) => {
-  let lt = 0;
-  let rt = height.length - 1;
+  let [lt, rt] = [0, height.length - 1];
   let max = 0;
 
   while (lt < rt) {
     const heightA = height[lt];
     const heightB = height[rt];
     max = Math.max(max, getArea([heightA, heightB], rt - lt));
+
     if (heightA < heightB) {
       lt++;
     } else {
